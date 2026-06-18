@@ -1,0 +1,88 @@
+-- ============================================
+-- SQL Operators
+-- Author: Sanskriti Thombare
+-- Source: Mode Analytics SQL Tutorial
+-- Topic: Comparison and Arithmetic Operators
+-- Date: June 2026
+-- ============================================
+
+-- =====================================================
+-- Greater Than (>)
+-- Return records where housing units in the West exceed 50
+-- =====================================================
+
+SELECT *
+FROM tutorial.us_housing_units
+WHERE west > 50;
+
+
+-- =====================================================
+-- Less Than or Equal To (<=)
+-- Return records where housing units in the South are 20 or fewer
+-- =====================================================
+
+SELECT *
+FROM tutorial.us_housing_units
+WHERE south <= 20;
+
+
+-- =====================================================
+-- Equal To (=)
+-- Return records for the month of January
+-- =====================================================
+
+SELECT *
+FROM tutorial.us_housing_units
+WHERE month_name = 'January';
+
+
+-- =====================================================
+-- Not Equal To (!=)
+-- Return records for all months except January
+-- =====================================================
+
+SELECT *
+FROM tutorial.us_housing_units
+WHERE month_name != 'January';
+
+
+-- =====================================================
+-- Select Specific Columns
+-- Display month number and month name for February
+-- =====================================================
+
+SELECT
+    month,
+    month_name
+FROM tutorial.us_housing_units
+WHERE month_name = 'February';
+
+
+-- =====================================================
+-- Arithmetic Operator
+-- Calculate the average housing units between West and South
+-- =====================================================
+
+SELECT
+    year,
+    month,
+    west,
+    south,
+    (west + south) / 2 AS south_west_avg
+FROM tutorial.us_housing_units;
+
+
+-- =====================================================
+-- Comparison Between Columns
+-- Return rows where West exceeds Midwest + Northeast combined
+-- =====================================================
+
+SELECT
+    year,
+    month,
+    west,
+    south,
+    midwest,
+    northeast
+FROM tutorial.us_housing_units
+WHERE west > (midwest + northeast);
